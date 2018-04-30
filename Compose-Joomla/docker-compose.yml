@@ -1,0 +1,26 @@
+# Informações para deploy disponíveis em README.md
+
+version: '3.1'
+
+services:
+  # container do joomla
+  joomla:
+    image: joomla
+    restart: always
+    # link com o bando de dados
+    links:
+      - joomladb:mysql
+    # porta aberta para escutar os requests
+    ports:
+      - 8080:80
+    # variáveis de auxilio para o Joomla
+    environment:
+      JOOMLA_DB_HOST: joomladb
+      JOOMLA_DB_PASSWORD: default
+  # container do banco de dados mysql
+  joomladb:
+    image: mysql:5.6
+    restart: always
+    # variáveis de auxílio para o MySQL
+    environment:
+      MYSQL_ROOT_PASSWORD: default
