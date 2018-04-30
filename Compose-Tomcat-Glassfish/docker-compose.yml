@@ -1,0 +1,20 @@
+# Informações para deploy disponíveis em README.md
+
+version: '3.5'
+
+services:
+  # container do Tomcat
+  tomcat:
+    image: tomcat:8.0
+    restart: always
+    # porta aberta para escutar os requests
+    ports:
+      - 9000:8080
+  # container do Glassfish
+  glassfish:
+    image: oracle/glassfish
+    restart: always
+    # portas abertas para escutar os requests
+    ports:
+      - 9010:8080
+      - 9011:4848
